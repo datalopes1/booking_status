@@ -1,5 +1,5 @@
 # Booking Status Prediction - Hotel Reservations Dataset
-![header](docs/zejeFXplx5zeX3gohyS3--4--wsc0u.jpg)
+![header](docs/img/zejeFXplx5zeX3gohyS3--4--wsc0u.jpg)
 
 #### Content
 - [Introduction](#-introduction)
@@ -23,6 +23,7 @@ The possibility of making reservations online has completely changed consumer be
 ## 🛠️ Tools 
 - **Python 3.12+**
 - **Libraries**:
+  - poetry
   - pandas
   - numpy
   - matplotlib
@@ -69,7 +70,7 @@ Original data can be found in [Kaggle](https://www.kaggle.com/datasets/ahsan81/h
 
 #### Target Behavior
 
-![plot](docs/img/plot_2.png)
+![plot](docs/img/plot/plot_2.png)
 
 #### Hypothesis Testing
 ##### Lead Time vs. Cancellations
@@ -82,7 +83,7 @@ We reject $H_0$: **A longer lead time increases the probability of cancellation.
 
 Bookings made between 150 and 300 days prior to the arrival date have a higher probability of cancellation. It is advisable to create alerts and confirmations for bookings starting from the 100-day mark.
 
-![plot](docs/img/plot_3.png)
+![plot](docs/img/plot/plot_3.png)
 
 ##### Average Price per Room vs. Cancellations
 
@@ -94,7 +95,7 @@ Since room prices are dynamic, seeing a better offer or realizing a suboptimal c
 We reject $H_0$: **A higher average price per room is associated with a higher probability of cancellation.**
 
 
-![plot](docs/img/plot_4.png)
+![plot](docs/img/plot/plot_4.png)
 
 ##### Number of Children vs. Cancellations
 
@@ -105,7 +106,7 @@ A higher number of children makes travel planning more challenging, as children 
 
 We reject $H_0$: A higher number of children increases the probability of cancellation.
 
-![plot](docs/img/plot_5.png)
+![plot](docs/img/plot/plot_5.png)
 
 ##### Room Type vs. Cancellation
 
@@ -116,7 +117,7 @@ Room type may also be related to cancellations, and testing this hypothesis coul
 
 We reject $H_0$: Room Type and Booking Status are related.
 
-![plot](docs/img/plot_6.png)
+![plot](docs/img/plot/plot_6.png)
 
 Types 1 and 4 have the most reservations; however, while Type 1 has a low cancellation rate, Type 4 has more cancellations than successful bookings, warranting deeper investigation. Type 6 has the highest proportional cancellation rate, which is another key point to consider.
 
@@ -129,13 +130,13 @@ We cannot conclude the hypothesis testing without examining market segments, so 
 
 We reject $H_0$: Marketing Segment and Booking Status are related.
 
-![plot](docs/img/plot_7.png)
+![plot](docs/img/plot/plot_7.png)
 
 As expected, the online segment is the most popular and also has the highest cancellation rate. Corporate and Complementary segments have the fewest cancellations.
 
 #### Observing over time
 
-![plot](docs/img/plot_8.png)
+![plot](docs/img/plot/plot_8.png)
 
 We observe a growth in the cancellation count, with a trend showing that cancellations peak from September to November, further investigation is needed to identify the factors behind this pattern.
 
@@ -153,9 +154,9 @@ The model has shown no signs of overfitting. It has high accuracy and a low numb
 - **F1 Score**: 0.8468.
 - **ROC AUC Score**: 0.9607.
 
-![plot](docs/img/plot_10.png)
-![plot](docs/img/plot_9.png)
-![plot](docs/img/plot_11.png)
+![plot](docs/img/plot/plot_10.png)
+![plot](docs/img/plot/plot_9.png)
+![plot](docs/img/plot/plot_11.png)
 
 ## ⚙️ How to Use
 You can make predictions using the [Streamlit](https://booking-status.streamlit.app/) app.
