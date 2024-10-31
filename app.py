@@ -11,7 +11,7 @@ def base_data(data_path):
     data = pd.read_csv(data_path)
     return data
 
-st.title("Hotel Reservation Cancellation Predictor")
+st.title("Hotel Booking Cancellation Predictor")
 st.write("Enter the data about the booking to confirm its cancellation probability")
 
 model_path = 'models/classifier.pkl'
