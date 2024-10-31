@@ -158,12 +158,12 @@ The model has shown no signs of overfitting. It has high accuracy and a low numb
 ![plot](docs/img/plot_11.png)
 
 ## ⚙️ How to Use
-You can make predictions using the [Streamlit]().
+You can make predictions using the [Streamlit](https://booking-status.streamlit.app/) app.
 
 ##### Install
 ```bash
-git clone
-cd 
+git clone https://github.com/datalopes1/booking_status.git
+cd booking_status
 poetry install
 ```
 ##### Train model
