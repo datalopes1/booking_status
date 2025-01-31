@@ -71,9 +71,9 @@ with st.container():
             st.markdown("#### **Canceled**")
             st.write(f"This booking has a {probability:.2f}% probability of cancellation.")
             img_path = 'docs/img/xBGsTPh1nZRnJE4EIAij--3--ho4oj.jpg'
-            st.image(img_path, use_column_width=True)
+            st.image(img_path, use_container_width = True)
         else:
             st.markdown("#### **Not Canceled**")
             st.write(f"This booking has a {probability:.2f}% probability of cancellation.")
             img_path = 'docs/img/NjsCPadTLHyoNtq3hQmG--2--jeyr4.jpg'
-            st.image(img_path, use_column_width=True)
+            st.image(img_path, use_container_width = True)
