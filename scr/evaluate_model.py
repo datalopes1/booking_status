@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, classification_report
@@ -6,7 +7,7 @@ from sklearn.metrics import make_scorer
 from predict import load_model
 from utils import load_data
 from train_model import split_data
-from data_preprocessing import get_features
+os.environ["LOKY_MAX_CPU_COUNT"] = "4"
 
 def evaluate_model(model, X_test, y_test):
     """
@@ -65,12 +66,14 @@ def cross_validate_model(model, X_val, y_val, cv_splits=5, average_f1='weighted'
 
 if __name__ == "__main__":
     
-    data = load_data("data/raw/Hotel Reservations.csv")
+    data = pd.read_csv("data/processed/train_data.csv")
     model = load_model("models/classifier.pkl")
 
-
-    X, y = get_features(data)
+    X = data.drop(columns = 'booking_status', axis = 1)
+    y = data['booking_status']
+    
     X_train, X_test, y_train, y_test = split_data(X, y)
 
     mean_f1, std_f1, all_scores = cross_validate_model(model, X_train, y_train)
     y_proba, y_pred = evaluate_model(model, X_test, y_test)
+

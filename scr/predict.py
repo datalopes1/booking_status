@@ -1,6 +1,7 @@
+import os
 import pandas as pd 
 import joblib
-from utils import load_data
+os.environ["LOKY_MAX_CPU_COUNT"] = "4"
 
 def load_model(model_path):
     """
@@ -33,16 +34,19 @@ def make_predictions(model, data):
 
 if __name__ == "__main__":
 
-    data = load_data("data/raw/Hotel Reservations.csv")
+    data = pd.read_csv("data/processed/test_data.csv")
+    results = pd.read_csv("data/processed/test_results.csv")
     model = load_model("models/classifier.pkl")
 
     predictions, probabilities = make_predictions(model, data)
     data['pred'] = predictions
-    data['prob'] = probabilities
+    data['prob'] = probabilities.round(4)
 
-    results = data[['Booking_ID', 'booking_status', 'pred', 'prob']]
+    result_df = pd.concat([data, results], axis = 1)
+    result_df = result_df[['booking_status', 'pred', 'prob']]
+    print(result_df.head())
 
-    results.to_excel("data/processed/predictions.xlsx", index = False)
+    result_df.to_excel("data/processed/predictions.xlsx", index = False)
     print("Predictions saved in data/processed/")
 
 
