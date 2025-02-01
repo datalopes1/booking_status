@@ -5,22 +5,6 @@ from sklearn.compose import ColumnTransformer
 from feature_engine.imputation import MeanMedianImputer, CategoricalImputer
 from category_encoders import TargetEncoder, OrdinalEncoder
 
-def get_features(data):
-    """
-    Splits the dataset into features (X) and target (y)
-
-    Args:
-        data (pd.DataFrame): Dataframe with the raw data.
-
-    Returns:
-        tuple:
-            - features (pd.DataFrame)
-            - target (pd.Series)
-    """
-    features = data.drop(columns=['Booking_ID', 'booking_status', 'arrival_year'], axis=1)
-    target = data['booking_status']
-    return features, target
-
 def get_preprocessor():
     """
     Create the pre-processing pipeline
@@ -60,24 +44,3 @@ def get_preprocessor():
     )
     
     return preprocessor
-
-def preprocess_data(data):
-    """
-    Apply the pre-processing pipeline
-
-    Args: 
-        data (pd.DataFrame): Dataframe with the raw data.
-    
-    Returns:
-        tuple:
-            - X_transformed (pd.DataFrame): Ready and transformed features.
-            - y (pd.Series): Target
-            - preprocessor (ColumnTransformer): Pre-processing pipeline.
-    """
-    X, y = get_features(data)
-    preporcessor = get_preprocessor()
-    X_transformed = preporcessor.fit_transform(X, y)
-
-    X_transformed = pd.DataFrame(X_transformed, columns = X.columns)
-
-    return X_transformed, y, preporcessor
