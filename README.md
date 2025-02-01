@@ -169,8 +169,17 @@ poetry install
 ```
 ##### Train model
 ```bash
-cd scr
-python main.py
+python scr/train_model.py
+```
+
+##### Generate predictions in a .xlsx file
+```bash
+python scr/predict.py
+```
+
+##### Evaluate the model
+```bash
+python scr/evaluate_model.py
 ```
 
 ## 📚 License
